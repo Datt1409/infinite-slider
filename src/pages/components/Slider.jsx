@@ -1,13 +1,6 @@
 import Image from "next/image";
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import {
-  findMiddleIndex,
-  findMovePrevFirstId,
-  findMovePrevFirstIndex,
-  findMovePrevIndex,
-  findMovePrevSecondIndex,
-  findRightIndex,
-} from "../utils";
+import { findMiddleIndex, findMovePrevIndex, findRightIndex } from "../utils";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default function Slider({ cards }) {
@@ -32,8 +25,6 @@ export default function Slider({ cards }) {
     () => findMovePrevIndex(clonedCards, 4),
     [clonedCards]
   );
-
-  console.log(findMovePrev);
 
   const movePrev = () => {
     if (active) {
