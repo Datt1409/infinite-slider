@@ -5,10 +5,9 @@ import Button from "./Button";
 import Title from "./Title";
 import Card from "./Card";
 
-export default function Slider({ cards, cardWith, gap, cardHeight }) {
+export default function Slider({ cards }) {
   const [currentIndex, setCurrentIndex] = useState(4);
   const [active, setActive] = useState(true);
-
   const carousel = useRef(null);
   const clonedCards = useMemo(
     () => [...cards.slice(-2), ...cards, ...cards.slice(0, 2)],
@@ -48,9 +47,7 @@ export default function Slider({ cards, cardWith, gap, cardHeight }) {
   };
 
   useEffect(() => {
-    carousel.current.style.transform = `translateX(-${
-      currentIndex * (gap * 4 + cardWith)
-    }px)`;
+    carousel.current.style.transform = `translateX(-${currentIndex * 516}px)`;
   }, [currentIndex, clonedCards]);
 
   return (
@@ -61,21 +58,18 @@ export default function Slider({ cards, cardWith, gap, cardHeight }) {
         height={759}
         className="absolute bottom-0 right-0 opacity-30 -z-10"
         alt=""
+        priority={false}
       />
       {/* Title */}
       <Title />
 
       {/* Cards */}
       <div
-        className={`w-full flex flex-row mx-32 gap-${gap} relative z-10`}
+        className={`w-full flex flex-row mx-32 gap-9 relative z-10`}
         ref={carousel}
         onTransitionEnd={() => onTransitonEnd()}
       >
-        <Card
-          clonedCards={clonedCards}
-          cardHeight={cardHeight}
-          cardWith={cardWith}
-        />
+        <Card clonedCards={clonedCards} />
       </div>
 
       {/* Buttons */}

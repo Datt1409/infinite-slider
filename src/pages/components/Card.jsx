@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function Card({ clonedCards, cardHeight, cardWith }) {
+export default function Card({ clonedCards }) {
+  console.log(clonedCards);
   return (
     <>
       {clonedCards.map((card, i) => (
@@ -9,7 +10,7 @@ export default function Card({ clonedCards, cardHeight, cardWith }) {
           style={{
             backgroundImage: `url(${card.url})`,
           }}
-          className={`w-[${cardWith}px] h-[${cardHeight}px] relative bg-cover flex-shrink-0`}
+          className={`w-[480px] h-[335px] relative bg-cover flex-shrink-0`}
         >
           <div className="absolute bottom-5 ml-6">
             <p className="text-white pb-1 text-sm font-normal tracking-[0.3px]">
