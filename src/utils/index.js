@@ -25,20 +25,12 @@ export const initialCards = [
   },
 ];
 
-export const findMiddleIndex = (arr, targetId) => {
-  let startIndex = 0;
-  if (arr[startIndex].id === targetId) {
-    startIndex++;
-  }
-  const index = arr.findIndex(
-    (item, i) => i > startIndex && item.id === targetId
-  );
-  return index;
-};
-
-export const findRightIndex = (arr, targetId) => {
+export const findPointerIndex = (arr, targetId) => {
+  let firstIndex = -1;
+  let secondIndex = -1;
   let startIndex = 0;
   let count = 0;
+
   if (arr[startIndex].id === targetId) {
     startIndex++;
   }
@@ -46,30 +38,10 @@ export const findRightIndex = (arr, targetId) => {
   for (let i = startIndex; i < arr.length; i++) {
     if (arr[i].id === targetId) {
       count++;
-
-      if (count === 2) {
-        return i;
-      }
-    }
-  }
-};
-
-export const findMovePrevIndex = (arr, target) => {
-  let firstIndex = -1;
-  let secondIndex = -1;
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].id === target) {
-      firstIndex = i;
-      break;
-    }
-  }
-
-  if (firstIndex !== -1) {
-    for (let i = firstIndex + 1; i < arr.length; i++) {
-      if (arr[i].id === target) {
+      if (count === 1) {
+        firstIndex = i;
+      } else if (count === 2) {
         secondIndex = i;
-        break;
       }
     }
   }
